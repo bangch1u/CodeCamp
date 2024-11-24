@@ -1,0 +1,44 @@
+{
+  "customer": [
+    {
+      "id": "1",
+      "name": "Nguyễn Trọng Bằng",
+      "email": "bangntph30138@fpt.edu.vn",
+      "cccd": "0123456789",
+      "phoneNumber": "0399503203",
+      "gender": "0",
+      "date": "2024-06-06T17:00:00.000Z",
+      "course": "Data Science"
+    },
+    {
+      "id": "5037",
+      "name": "Nguyễn Anh Quyết3",
+      "email": "quyet@gmail.com",
+      "cccd": "0123124134",
+      "phoneNumber": "0399503203",
+      "gender": "1",
+      "date": "2024-06-03T17:00:00.000Z",
+      "course": "Data Science"
+    },
+    {
+      "id": "31d4",
+      "name": "Tạ Văn Định",
+      "email": "dinh@fpt.edu.vn",
+      "cccd": "076576534",
+      "phoneNumber": "03995030203",
+      "gender": "0",
+      "date": "2024-06-03T17:00:00.000Z",
+      "course": "Fullstack"
+    },
+    {
+      "id": "f028",
+      "name": "Nguyễn Văn A",
+      "email": "a@gmail.com",
+      "cccd": "039489032423",
+      "phoneNumber": "0399503203",
+      "gender": "1",
+      "date": "2024-06-06T17:00:00.000Z",
+      "course": "Fullstack"
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .table-responsive {
+            overflow-x: auto;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card rounded-0" style="margin-top: 15vh;">
+        <div class="card-header py-3 bg-white">
+            <div class="card-title d-flex justify-content-center fw-bolder fs-1 text-primary">{{title}}</div>
+        </div>
+        <div class="card-body p-0">
+            <nav class="navbar navbar-expand-lg bg-white">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent1/" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent1">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <!-- <a class="nav-link active btn btn-primary" aria-current="page" href="#">Home</a> -->
+                            </li>
+                            <li class="nav-item dropdown">
+                                <select class="form-select ms-lg-2 mt-3 text-primary fw-bold" ng-model="sapXep">
+                                    <option value="" selected>sắp xếp</option>
+                                    <option value="name">Họ Tên</option>
+                                    <option value="email">Email</option>
+                                    <option value="phoneNumber">Số Điện Thoại</option>
+                                    <option value="gender">Giới Tính</option>
+                                    <option value="date">Ngày Sinh</option>
+                                    <option value="course">Khóa Học</option>
+                                </select>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <input type="text" class="form-control mt-3 ms-lg-3" ng-model="gioiHan" placeholder="Nhập giới hạn....">
+                            </li>
+                            <li class="nav-item dropdown">
+                                <input type="text" class="form-control mt-3 ms-lg-4" placeholder="Tìm kiếm..." ng-model="timKiem">
+                                
+                            </li>
+                        </ul>
+                        
+                        
+                    </div>
+                </div>
+            </nav>
+            <div class="table-responsive" style="max-height: 500px;">
+                <table class="table ms-2">
+                    <thead>
+                        <tr class="">
+                            <th class="text-secondary">STT</th>
+                            <th class="text-secondary">Họ tên</th>
+                            <th class="text-secondary">Email</th>
+                            <th class="text-secondary">Số điện thoại</th>
+                            <th class="text-secondary">Ngày sinh</th>
+                            <th class="text-secondary">Giới tính</th>
+                            <th class="text-secondary">Cccd</th>
+                            <th class="text-secondary">Khóa học</th>
+                            <th class="text-secondary"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="cus in listCustomer |filter:customFilter| orderBy:sapXep | limitTo: gioiHan">
+                            <td class=" text-secondary">{{$index + 1}}</td>
+                            <td class="text-secondary">{{cus.HoTen}}</td>
+                            <td class="text-secondary">{{cus.email}}</td>
+                            <td class="text-secondary">{{cus.phoneNumber }}</td>
+                            <td class="text-secondary">{{cus.date | date: 'dd/MM/yyyy'}}</td>
+                            <td class="text-secondary">{{cus.gender == 0 ? 'Nam' : (cus.gender == 1 ? 'Nữ' : 'Chưa biết')}}</td>
+                            <td class="text-secondary">{{cus.cccd}}</td>
+                            <td class="text-secondary">{{cus.course}}</td>
+                            <td>
+                                <a class="btn" href="#!/detail-customer/{{cus.id}}"><i
+                                        class="bi bi-clipboard-data me-3 text-info"></i></a>
+                                <!-- <a type="button" class="btn" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal" ng-click="getCustomerByID(cus.id)" href="#!"><i class="bi bi-clipboard-data me-3 text-info"></i></a> -->
+                                <a class="btn" ng-click="deleteCustomer(cus.id)" href=""><i
+                                        class="bi bi-trash me-3 text-danger"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Thông tin học viên {{selectCustomer.name}}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="form" ng-submit="createCustomer()">
+                        <div class="row">
+                            <div class="col col-lg-6 mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Họ và tên</label>
+                                <input type="text" class="form-control" ng-model="selectCustomer.name">
+                            </div>
+                            <div class="col col-lg-6 mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Chứng minh thư</label>
+                                <input type="text" class="form-control" ng-model="selectCustomer.cccd">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-lg-6 mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Email</label>
+                                <input type="text" class="form-control" ng-model="selectCustomer.email">
+                            </div>
+                            <div class=" col col-lg-6 mb-3">
+                                <label class="form-label d-block">Giới tính</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender"
+                                        ng-model="selectCustomer.gender" value=0
+                                        ng-checked="selectCustomer.gender == 0">
+                                    <label class="form-check-label" for="maleRadio">Nam</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender"
+                                        ng-model="selectCustomer.gender" value=1
+                                        ng-checked="selectCustomer.gender == 1">
+                                    <label class="form-check-label" for="femaleRadio">Nữ</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-lg-6 mb-3">
+                                <label class="form-label">Số điện thoại</label>
+                                <input type="text" class="form-control" ng-model="selectCustomer.phoneNumber">
+                            </div>
+                            <div class="col col-lg-6 mb-3">
+                                <label class="form-label">Chọn khóa học</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-lg-6 mb-3">
+                                <label class="form-label">Ngày sinh</label>
+                                <input type="date" class="form-control" ng-model="selectDate">
+                            </div>
+                            <div class="col col-lg-6 mb-3">
+                                <label class="form-label">Hình thức thanh toán</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" ng-click="editCustomer(selectCustomer.id)">Save
+                        changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

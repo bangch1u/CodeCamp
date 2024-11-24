@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách Sinh Viên</title>
+</head>
+<body>
+    <h1>Danh sách Sinh Viên</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Mã SV</th>
+                <th>Họ Tên</th>
+                <th>Năm Sinh</th>
+                <th>Số Điện Thoại</th>
+                <th>Địa chỉ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% sinhviens.forEach(sinhvien => { %>
+            <tr>
+                <td><%= sinhvien.id %></td>
+                <td><%= sinhvien.maSV %></td>
+                <td><%= sinhvien.hoTen %></td>
+                <td><%= sinhvien.namSinh %></td>
+                <td><%= sinhvien.soDienThoai %></td>
+                <td><%= sinhvien.address %></td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>

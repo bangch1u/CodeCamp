@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>c</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">\
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+    <div class="container" style="margin-top: 20vh;">
+        <div class="row">
+            <div class="col-lg-6  col-sm-12 float-start">
+                <h1>{{title1}}</h1>
+                <h1>Tìm kiếm cơ hội phát triển trong ngành IT cùng Codecamp</h1>
+                <p class="text-secondary">Trang bị cho mình những kiến thức và kỹ năng thực tế qua khóa học trực tuyến
+                    với sự đồng hành của
+                    Mentor cho riêng bạn. Sẵn
+                    sàng để có công việc trong ngành IT với lương khởi điểm tối thiểu 12,000,000 đồng.
+                </p>
+                <div class="row mt-5">
+                    <div class="col-lg-4  col-sm-6">
+                        <div class="card border-0">
+                            <ul class="list-group">
+                                <li class="list-group-item border-0 text-primary">2500+ <i
+                                        class="bi bi-person-circle"></i></li>
+                                <li class="list-group-item border-0">Học Viên</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="card border-0">
+                            <ul class="list-group">
+                                <li class="list-group-item border-0 text-primary">40% <i class="bi bi-coin"></i></li>
+                                <li class="list-group-item border-0">Thu Nhập Tăng</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4  col-sm-6">
+                        <div class="card border-0">
+                            <ul class="list-group">
+                                <li class="list-group-item border-0 text-primary">95% <i class="bi bi-flag-fill"></i>
+                                </li>
+                                <li class="list-group-item border-0">3 Tháng Có Việc</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 100px;">
+                    <div class="col-lg-4  d-block align-items-sm-center">
+                        <!-- Button trigger modal -->
+                        <!-- <div class="d-flex justify-content-center">
+                            <button type="button" class="btn btn-primary px-5 py-4 fw-bold" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">
+                                Đăng ký
+                            </button>
+                        </div> -->
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Đăng ký</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form" ng-submit="createCustomer()">
+                                            <div class="row">
+                                                <div class="col col-lg-6 mb-3">
+                                                    <label for="exampleInputEmail1" class="form-label">Họ và tên</label>
+                                                    <input type="text" class="form-control"
+                                                        ng-model="inputCustomer.name">
+                                                    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                                                </div>
+                                                <div class="col col-lg-6 mb-3">
+                                                    <label for="exampleInputPassword1" class="form-label">Chứng minh
+                                                        thư</label>
+                                                    <input type="text" class="form-control"
+                                                        ng-model="inputCustomer.cccd">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col col-lg-6 mb-3">
+                                                    <label for="exampleInputPassword1" class="form-label">Email</label>
+                                                    <input type="text" class="form-control"
+                                                        ng-model="inputCustomer.email">
+                                                </div>
+                                                <div class=" col col-lg-6 mb-3">
+                                                    <label class="form-label d-block">Giới tính</label>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="gender"
+                                                            ng-model="inputCustomer.gender" value=0>
+                                                        <label class="form-check-label" for="maleRadio">Nam</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="gender"
+                                                            ng-model="inputCustomer.gender" value=1>
+                                                        <label class="form-check-label" for="femaleRadio">Nữ</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col col-lg-6 mb-3">
+                                                    <label class="form-label">Số điện thoại</label>
+                                                    <input type="text" class="form-control"
+                                                        ng-model="inputCustomer.phoneNumber">
+                                                </div>
+                                                <div class="col col-lg-6 mb-3">
+                                                    <label class="form-label">Chọn khóa học</label>
+                                                    <select class="form-select" aria-label="Default select example">
+                                                        <option selected>Open this select menu</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col col-lg-6 mb-3">
+                                                    <label class="form-label">Ngày sinh</label>
+                                                    <input type="date" class="form-control" ng-model="selectDate">
+                                                </div>
+
+
+                                                <div class="col col-lg-6 mb-3">
+                                                    <label class="form-label">Hình thức thanh toán</label>
+                                                    <select class="form-select" aria-label="Default select example">
+                                                        <option selected>Open this select menu</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button ng-click="createCustomer()" class="btn btn-primary" onclick="console.log()">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 d-flex justify-content-center  float-end">
+                <img src="img/logoMarrkNew.png" alt="" style="width: 60vw; max-width: 100%;">
+            </div>
+        </div>
+        <div class="row" style="margin-top:20vh;">
+            <div class="row">
+                <div class="col text-primary text-center">
+                    <h1>Câu chuyện học viên</h1>
+                </div>
+            </div>
+            <div class="card p-3">
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <img src="img/mark.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Nguyễn Trọng Bằng</h5>
+                                <p class="card-text text-secondary">Thịnh tốt nghiệp cử nhân Hóa Học tại Đại học Khoa
+                                    học Tự
+                                    nhiên và sau
+                                    đó làm việc tại Viện Tài Nguyên và Môi Trường Thành phố Hồ Chí Minh với vai trò
+                                    Nghiên
+                                    cứu viên. Trải qua nhiều công việc, Thịnh đã làm việc với rất nhiều dữ liệu cho
+                                    nghiên
+                                    cứu và trong lĩnh vực kinh doanh và nhận thấy rằng những dữ liệu đó thật đáng kinh
+                                    ngạc.
+                                    Thịnh quyết định chuyển sang lĩnh vực Khoa học dữ liệu bắt đầu bằng các khoá học
+                                    tham
+                                    khảo trên Google, Linked In. Tuy nhiên, Thịnh vẫn thấy rời rạc và chưa đủ nên hướng
+                                    đến
+                                    việc tìm đơn vị giảng dạy uy tín. Với ý định rõ ràng về mục tiêu trong tương lai,
+                                    Thịnh
+                                    muốn tìm 1 khóa học ngắn và đảm bảo có việc làm ngay sau khi tốt nghiệp. Codecamp
+                                    chính là sự lựa chọn hàng đầu của Thịnh với cá hai tiêu chí trên. Thịnh đã nghiêm
+                                    túc
+                                    học tập, thực hiện đề án cuối khoá xuất sắc và tìm được việc làm nhanh chóng ngay
+                                    khi
+                                    hoàn thành khoá học. Hiện tại, Thịnh đã chuyển ngành thành công và đang đảm nhận vị
+                                    trí
+                                    Data Analyst ở công ty công nghệ uy tín.</p>
+                                <a href="#" class="btn btn-primary">Xem dự án</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <img src="img/mark2.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Hoàng Văn Khoa</h5>
+                                <p class="card-text">Hành trình trở thành Web Developer của Khoa - một trong những học
+                                    viên
+                                    có dự án cuối khóa ấn tượng nhất chính là hành trình “from zero to hero” Huệ dự định
+                                    làm
+                                    việc ở nước ngoài, sau một thời gian tìm hiểu, anh nhận thấy vị trí Web Developer là
+                                    một
+                                    trong những vị trí đang “khát" nhân lực không chỉ ở Việt Nam mà trên toàn thế giới.
+                                </p>
+                                <a href="#" class="btn btn-primary">Xem dự án</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <img src="img/mark3.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Nghiêm Anh Hiếu</h5>
+                                <p class="card-text">Hành trình trở thành Web Developer của Khoa - một trong những học
+                                    viên
+                                    có dự án cuối khóa ấn tượng nhất chính là hành trình “from zero to hero” Huệ dự định
+                                    làm
+                                    việc ở nước ngoài, sau một thời gian tìm hiểu, anh nhận thấy vị trí Web Developer là
+                                    một
+                                    trong những vị trí đang “khát" nhân lực không chỉ ở Việt Nam mà trên toàn thế giới.
+                                    Thịnh đã nghiêm túc
+                                    học tập, thực hiện đề án cuối khoá xuất sắc và tìm được việc làm nhanh chóng ngay
+                                    khi
+                                    hoàn thành khoá học. Hiện tại, Thịnh đã chuyển ngành thành công và đang đảm nhận vị
+                                    trí
+                                    Data Analyst ở công ty công nghệ uy tín.
+                                </p>
+                                <a href="#" class="btn btn-primary">Xem dự án</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 20vh;">
+
+        </div>
+        <div class="row  text-center ">
+            <div class="col-12 text-center">
+                <h1 class="text-primary">Các đối tác đồng hành cùng Codecamp</h1>
+            </div>
+            <div class="col-lg-3 col-sm-6 mt-sm-2">
+                <img src="img/63be5efc9a3b6ad714fcd416_google-logo-9834 1.png" alt="">
+            </div>
+            <div class="col-lg-3 col-sm-6 mt-sm-2">
+                <img src="img/63be5efc0d178ca51cc6041e_image 14.png" alt="">
+            </div>
+            <div class="col-lg-3 col-sm-6 mt-sm-2">
+                <img src="img/Amazon-Logo.png" style="width: 130px;" alt="">
+            </div>
+            <div class="col-lg-3 col-sm-6 mt-sm-2">
+                <img src="img/FreeCodeCamp_logo.png" style="width: 130px;" alt="">
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <!-- link thư viện angularJs -->
+    <script src="https://code.angularjs.org/1.8.2/angular.min.js"></script>
+    <!-- link thư viện angularJs Route | bắt buộc phải để bên dưới thư viện angularJS -->
+    <script src="https://code.angularjs.org/1.8.2/angular-route.min.js"></script>
+</body>
+
+</html>
